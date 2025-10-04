@@ -22,25 +22,25 @@ jobs:
         
     - name: Build application
       run: |
-        pyinstaller --windowed --name MagnetLinkExtractor magnet_extractor.py
-        cp -r dist/MagnetLinkExtractor.app MagnetLinkExtractor.app
+        pyinstaller --windowed --name MagnetLinkExtractor1 magnet_extractor.py
+        cp -r dist/MagnetLinkExtractor1.app MagnetLinkExtractor1.app
         
     - name: Create DMG installer
       run: |
         brew install create-dmg
         create-dmg \
-          --volname "MagnetLinkExtractor Installer" \
+          --volname "MagnetLinkExtractor1 Installer" \
           --window-pos 200 120 \
           --window-size 800 400 \
           --icon-size 100 \
-          --icon "MagnetLinkExtractor.app" 200 190 \
-          --hide-extension "MagnetLinkExtractor.app" \
+          --icon "MagnetLinkExtractor1.app" 200 190 \
+          --hide-extension "MagnetLinkExtractor1.app" \
           --app-drop-link 600 190 \
-          "MagnetLinkExtractor.dmg" \
-          "MagnetLinkExtractor.app/"
+          "MagnetLinkExtractor1.dmg" \
+          "MagnetLinkExtractor1.app/"
     
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: MagnetLinkExtractor-macOS
-        path: MagnetLinkExtractor.dmg
+        name: MagnetLinkExtractor1-macOS
+        path: MagnetLinkExtractor1.dmg
